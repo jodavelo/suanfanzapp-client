@@ -1,0 +1,62 @@
+$bgcolor: #00bb2d;
+.login-page {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+    position: relative;
+    .content {
+        z-index: 1;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        .app-name {
+            margin-top: 0px;
+            padding-bottom: 10px;
+            font-size: 32px;
+        }
+        .login-form {
+            padding: 40px;
+            background: #fff;
+            width: 500px;
+            box-shadow: 0 0 10px #ddd;
+            input:-webkit-autofill {
+                -webkit-box-shadow: 0 0 0 30px white inset;
+            }
+            .btn-login-signin{
+                background: #00bb2d  !important;
+            }
+            ::ng-deep .mat-form-field.mat-focused .mat-form-field-label{
+                color: $bgcolor !important;
+            }
+            ::ng-deep .mat-focused .mat-form-field-underline .mat-form-field-ripple{
+                background-color: $bgcolor !important;
+            }
+        }
+    }
+
+    &:after {
+        content: '';
+        background: rgb(0, 187, 45);
+        position: absolute;
+        top: 0;
+        left: 0;
+        bottom: 50%;
+        right: 0;
+    }
+    &:before {
+        content: '';
+        background: #00bb2d;
+        position: absolute;
+        top: 50%;
+        left: 0;
+        bottom: 0;
+        right: 0;
+    }
+}
+.text-center {
+    text-align: center;
+}
+.w-100 {
+    width: 100%;
+}
