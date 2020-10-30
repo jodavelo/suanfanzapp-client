@@ -1,6 +1,9 @@
 import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
+import { Observable } from 'rxjs';
+import { environment } from '../../../environments/environment';
 import { UserI } from '../interfaces/UserI';
+import { HttpClient } from "@angular/common/http";
 
 @Injectable({
   providedIn: 'root'
@@ -10,17 +13,28 @@ export class AuthService {
   user: UserI | undefined;
 
   constructor(
-    private router: Router
+    private router: Router,
+    private httpClient: HttpClient
   ) { }
 
-  // tslint:disable-next-line:typedef
-  login(user: UserI){
-    const passKey = 'Hola123.';
-    if (user.password === passKey){
-      this.user = user;
-      window.localStorage.setItem('user', JSON.stringify(this.user));
-    }
+  loginMail(user: UserI):Observable<any> {
+    // const passKey = "suanfanzon";
+    // if (user.contrasena === passKey) {
+    //   this.user = user;
+    //   window.localStorage.setItem('user', JSON.stringify(this.user));
+    // }
+    return this.httpClient.post(environment.url_api+'user/login-mail', user);
   }
+
+  loginPhone(user: UserI):Observable<any> {
+    // const passKey = "suanfanzon";
+    // if (user.contrasena === passKey) {
+    //   this.user = user;
+    //   window.localStorage.setItem('user', JSON.stringify(this.user));
+    // }
+    return this.httpClient.post(environment.url_api+'user/login-phone', user);
+  }
+  
 
   // tslint:disable-next-line:typedef
   isLogged(){

@@ -10,6 +10,9 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatCheckboxModule } from '@angular/material/checkbox';
 import { MatInputModule } from '@angular/material/input';
 import {MatProgressBarModule} from '@angular/material/progress-bar';
+import { MatSnackBarModule } from "@angular/material/snack-bar";
+import { MatRadioModule } from "@angular/material/radio";
+import { HttpClientModule } from "@angular/common/http";
 
 @NgModule({
   declarations: [
@@ -24,7 +27,11 @@ import {MatProgressBarModule} from '@angular/material/progress-bar';
     MatProgressBarModule,
     MatButtonModule,
     MatCheckboxModule,
-    MatInputModule
+    MatInputModule,
+    MatSnackBarModule,
+    MatRadioModule,
+    HttpClientModule
+    
   ],
   providers: [],
   bootstrap: [AppComponent]
