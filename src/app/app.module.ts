@@ -11,8 +11,9 @@ import { MatCheckboxModule } from '@angular/material/checkbox';
 import { MatInputModule } from '@angular/material/input';
 import {MatProgressBarModule} from '@angular/material/progress-bar';
 import { MatSnackBarModule } from "@angular/material/snack-bar";
-import { MatRadioModule } from "@angular/material/radio";
+import { MatRadioModule, MAT_RADIO_DEFAULT_OPTIONS, MAT_RADIO_DEFAULT_OPTIONS_FACTORY } from "@angular/material/radio";
 import { HttpClientModule } from "@angular/common/http";
+import { MatFormFieldModule } from "@angular/material/form-field";
 
 @NgModule({
   declarations: [
@@ -30,10 +31,14 @@ import { HttpClientModule } from "@angular/common/http";
     MatInputModule,
     MatSnackBarModule,
     MatRadioModule,
-    HttpClientModule
+    HttpClientModule,
+    MatFormFieldModule
     
   ],
-  providers: [],
+  providers: [{
+    provide: MAT_RADIO_DEFAULT_OPTIONS,
+    useValue: { color: 'accent' },
+}],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
