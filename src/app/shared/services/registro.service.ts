@@ -1,6 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
+import { TelefonoI } from '../interfaces/TelefonoI';
 import { UserI } from '../interfaces/UserI';
 
 @Injectable({
@@ -14,11 +15,13 @@ export class RegistroService {
     private httpClient: HttpClient
   ) { }
 
-  verifyMail(user: UserI): Observable<any>{
-    return this.httpClient.post(this.url+'verify-mail', user);
+  verifyMail(mail: string): Observable<any>{
+    return this.httpClient.post(this.url+'verify-mail', {mail: mail});
   }
 
-  verifyPhone(user: UserI): Observable<any>{
-    return this.httpClient.post(this.url+'verify-phone', user);
+  verifyPhone(telefono: TelefonoI): Observable<any>{ 
+    //console.log(telefono);   
+    return this.httpClient.post(this.url+'verify-phone', telefono);
+
   }
 }

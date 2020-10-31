@@ -7,6 +7,10 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { UserService } from 'src/app/shared/services/usuario.service';
 import { RegistroService } from 'src/app/shared/services/registro.service';
 import { UserI } from 'src/app/shared/interfaces/UserI';
+import { PhoneValidator } from 'src/app/shared/validators/phone.validator';
+import { MailValidator } from 'src/app/shared/validators/mail.validator';
+import { TelefonoI } from 'src/app/shared/interfaces/TelefonoI';
+import { InvalidValueValidator } from 'src/app/shared/validators/invalid-value.validator';
 
 @Component({
   selector: 'app-register',
@@ -24,15 +28,46 @@ export class RegisterComponent implements OnInit {
     urlImagen:'',
     contrasena:''
   };
-  listaPrefijos: PrefixI[];
-  hide = true;
-  formGroup: FormGroup = new FormGroup({
-    emailFormControl :new FormControl('', [
+  telefono:TelefonoI = {
+    id_prefijo: null,
+    telefono: null
+  }
+  
+  telefonoFormGroup: FormGroup = new FormGroup({
+    prefijoFormControl :new FormControl(-1, [
       Validators.required,
-      Validators.email,
-    ])
+      InvalidValueValidator.createValidator(-1),
+    ]), 
+    numeroFormControl :new FormControl(null, [
+      Validators.required,
+      Validators.maxLength(15),
+    ]),
+  }, PhoneValidator.createValidator(this.registroService));
+  emailFormControl: FormControl = new FormControl(null, [
+    Validators.required,
+    Validators.email,
+  ], MailValidator.createValidator(this.registroService));
+
+  formGroup: FormGroup = new FormGroup({
+    telefonoFormGroup: this.telefonoFormGroup,
+    emailFormControl: this.emailFormControl, 
+    contrasenaFormControl :new FormControl(null, [
+      Validators.required,
+      Validators.minLength(5),
+    ]), 
+    nombreFormControl :new FormControl(null, [
+      Validators.required,
+      Validators.maxLength(50),
+    ]), 
+    apellidoFormControl :new FormControl(null, [
+      Validators.required,
+      Validators.maxLength(50),
+    ]), 
+    urlFormControl :new FormControl(null), 
   });
 
+  listaPrefijos: PrefixI[];
+  hide = true;
 
   constructor(
     private router:Router,
@@ -45,61 +80,26 @@ export class RegisterComponent implements OnInit {
      }
 
   ngOnInit(): void {
-    this.getPrefix();
+    this.setPrefix();
   }
 
-  getPrefix(){
+  setPrefix():void{
     this.prefijoService.getAll().subscribe(res => {
       this.listaPrefijos = res;
-      console.log(this.listaPrefijos);
+      //console.log(this.listaPrefijos);
     }, err => {
-      console.log(err);
+      console.error(err);
     });
   }
 
-  async doRegister(e) {
+  doRegister(e) {
     e.preventDefault();
-
-    if(this.usuario.correo.trim().length == 0){
-      return;
-    }
-    if(this.usuario.contrasena.trim().length == 0){
-      return;
-    }
-    if(this.usuario.telefono == null || this.usuario.telefono < 0){
-      return;
-    }
-    if(this.usuario.idPrefijo == null || this.usuario.idPrefijo < 0){
-      return;
-    }
-    if(this.usuario.nombre.trim().length == 0){
-      return;
-    }
-    if(this.usuario.apellido.trim().length == 0){
-      return;
-    }
-    if(this.usuario.urlImagen.trim().length == 0){
-      return;
-    }  
-
-    const existingMail = await this.registroService.verifyMail(this.usuario).toPromise();
-    if(existingMail == true){
-      console.log('Mail existe');
-      return;
-    }
-    const existingPhone = await this.registroService.verifyPhone(this.usuario).toPromise();
-    console.log('existingmail: '+JSON.stringify(existingMail));
-    console.log('existingphone: '+JSON.stringify(existingPhone));
-    if(existingPhone == true){
-      console.log('Telefono existe');
-      return;
-    }
 
     console.log(this.usuario);
     this.usuarioService.save(this.usuario).subscribe(res => {
       console.log(res);
     }, err => {
-      console.log(err);
+      console.error(err);
     });
 
     //this.authService.login(usuario);
