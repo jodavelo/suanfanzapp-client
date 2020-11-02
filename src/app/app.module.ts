@@ -19,6 +19,9 @@ import {MatSelectModule} from '@angular/material/select';
 import { RegisterComponent } from './pages/public/register/register.component';
 import {MatIconModule} from '@angular/material/icon';
 import {MatStepperModule} from '@angular/material/stepper';
+import { MatGridListModule } from '@angular/material/grid-list';
+import { MatCardModule } from '@angular/material/card';
+import { MatMenuModule } from '@angular/material/menu';
 
 @NgModule({
   declarations: [
@@ -44,7 +47,10 @@ import {MatStepperModule} from '@angular/material/stepper';
     MatSelectModule,
     MatIconModule,
     MatStepperModule,
-    MatSnackBarModule
+    MatSnackBarModule,
+    MatGridListModule,
+    MatCardModule,
+    MatMenuModule
   ],
   providers: [{
     provide: MAT_RADIO_DEFAULT_OPTIONS,
