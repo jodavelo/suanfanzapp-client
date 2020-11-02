@@ -43,7 +43,8 @@ import {MatStepperModule} from '@angular/material/stepper';
     ReactiveFormsModule,
     MatSelectModule,
     MatIconModule,
-    MatStepperModule
+    MatStepperModule,
+    MatSnackBarModule
   ],
   providers: [{
     provide: MAT_RADIO_DEFAULT_OPTIONS,
