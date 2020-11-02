@@ -64,7 +64,7 @@ export class LoginComponent implements OnInit {
     } else {
       this.authService.loginPhone(this.user).subscribe(res => {
         console.log(res);
-        this.router.navigate(['home']);
+        this.router.navigate(['/']);
       }, err => {
         console.log(err);
       });
