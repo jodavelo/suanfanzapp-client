@@ -1,6 +1,11 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 
+// sockets
+import { SocketIoModule, SocketIoConfig } from 'ngx-socket-io';
+const config: SocketIoConfig = { url: environment.url_api, options: {}};
+import { environment } from 'src/environments/environment';
+
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { LoginComponent } from './pages/public/login/login.component';
@@ -44,7 +49,8 @@ import {MatStepperModule} from '@angular/material/stepper';
     MatSelectModule,
     MatIconModule,
     MatStepperModule,
-    MatSnackBarModule
+    MatSnackBarModule,
+    SocketIoModule.forRoot(config)
   ],
   providers: [{
     provide: MAT_RADIO_DEFAULT_OPTIONS,
