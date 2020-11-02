@@ -27,12 +27,12 @@ $titleFont: sfProTextMedium;
     .topColorBox {
         width: 100%;
         height: 222px;
-        background: #00BFA5;
+        background: #00bfa5;
     }
     .bottomColorBox {
         width: 100%;
         height: calc(100% - 222px);
-        background: #D3DBD9;
+        background: #d3dbd9;
     }
     .header {
         width: 100%;
@@ -59,15 +59,19 @@ $titleFont: sfProTextMedium;
         .media {
             .media-content {
                 .content {
+                    input.example-right-align::-webkit-outer-spin-button,
+                    input.example-right-align::-webkit-inner-spin-button {
+                        display: none;
+                    }
                     .field {
                         .buttons {
                             .is-info {
                                 width: 100px;
-                                background: #2C948A;
+                                background: #2c948a;
                             }
                             .is-success {
                                 width: 100px;
-                                background: #03D755;
+                                background: #03d755;
                             }
                         }
                     }
