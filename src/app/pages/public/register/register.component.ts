@@ -19,10 +19,11 @@ import { InvalidValueValidator } from 'src/app/shared/validators/invalid-value.v
 })
 export class RegisterComponent implements OnInit {
   usuario: UserI = {
+    id_user:-1,
     apellido:'',
     correo:'',
     descripcion:'',
-    idPrefijo:null,
+    id_prefijo:null,
     nombre:'',
     telefono:null,
     urlImagen:'',

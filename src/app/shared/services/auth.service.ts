@@ -4,6 +4,7 @@ import { Observable } from 'rxjs';
 import { environment } from '../../../environments/environment';
 import { UserI } from '../interfaces/UserI';
 import { HttpClient } from "@angular/common/http";
+import { LoginI } from '../interfaces/LoginI';
 
 @Injectable({
   providedIn: 'root'
@@ -17,7 +18,7 @@ export class AuthService {
     private httpClient: HttpClient
   ) { }
 
-  loginMail(user: UserI):Observable<any> {
+  loginMail(user: LoginI):Observable<any> {
     // const passKey = "suanfanzon";
     // if (user.contrasena === passKey) {
     //   this.user = user;
@@ -26,7 +27,7 @@ export class AuthService {
     return this.httpClient.post(environment.url_api+'user/login-mail', user);
   }
 
-  loginPhone(user: UserI):Observable<any> {
+  loginPhone(user: LoginI):Observable<any> {
     // const passKey = "suanfanzon";
     // if (user.contrasena === passKey) {
     //   this.user = user;
@@ -43,7 +44,7 @@ export class AuthService {
 
   // tslint:disable-next-line:typedef
   isLoggedIn(){
-    if (localStorage.getItem('isLoggedin')){
+    if (localStorage.getItem('user')){
       return true;
     }
   }

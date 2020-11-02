@@ -11,8 +11,10 @@ export class PhoneValidator {
         id_prefijo: control.value.prefijoFormControl,
         telefono: control.value.numeroFormControl
       }
-      const res =  registroService.verifyPhone(telefono).pipe(
-        map((result: boolean) => result===false ? null : {invalidAsync: true})
+      const res = registroService.verifyPhone(telefono).pipe(
+        map((result: boolean) => { console.log(result);
+          return result===false ? null : {invalidAsync: true}
+        })
       );
       //console.log(res);
       return res;

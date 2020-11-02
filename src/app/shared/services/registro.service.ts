@@ -22,6 +22,5 @@ export class RegistroService {
   verifyPhone(telefono: TelefonoI): Observable<any>{ 
     //console.log(telefono);   
     return this.httpClient.post(this.url+'verify-phone', telefono);
-
   }
 }

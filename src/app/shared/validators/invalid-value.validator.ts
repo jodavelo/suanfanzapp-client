@@ -6,7 +6,7 @@ import { RegistroService } from '../services/registro.service';
 export class InvalidValueValidator {
   static createValidator(invalidOption: any): ValidatorFn {
     return (control: AbstractControl): {[key: string]: any} | null => {
-        console.log(typeof(control.value));
+        //console.log(typeof(control.value));
         const forbidden = invalidOption === control.value;
         return forbidden ? {forbiddenName: {value: control.value}} : null;
       };
