@@ -11,6 +11,7 @@ import { PhoneValidator } from 'src/app/shared/validators/phone.validator';
 import { MailValidator } from 'src/app/shared/validators/mail.validator';
 import { TelefonoI } from 'src/app/shared/interfaces/TelefonoI';
 import { InvalidValueValidator } from 'src/app/shared/validators/invalid-value.validator';
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 @Component({
   selector: 'app-register',
@@ -76,6 +77,7 @@ export class RegisterComponent implements OnInit {
     private prefijoService: PrefijoService,
     private usuarioService: UserService,
     private registroService: RegistroService,
+    private snackbar:MatSnackBar
     ) {
       
      }
@@ -90,22 +92,45 @@ export class RegisterComponent implements OnInit {
       //console.log(this.listaPrefijos);
     }, err => {
       console.error(err);
+      this.openSnackBar(err);
+
+
     });
   }
 
+  openSnackBar(message: string, action: string = 'Ok') {
+    this.snackbar.open(message, action, {
+      duration: 3000,
+    });
+  }
+  
   doRegister(e) {
     e.preventDefault();
+    this.usuario = {
+      apellido: this.formGroup.get('apellidoFormControl').value,
+      correo:this.formGroup.get('emailFormControl').value,
+      id_prefijo:this.formGroup.get('telefonoFormGroup').value,
+      nombre:this.formGroup.get('nombreFormControl').value,
+      telefono:this.formGroup.get('telefonoFormGroup').value,
+      contrasena:this.formGroup.get('contrasenaFormControl').value,
+      urlImagen:this.formGroup.get('urlFormControl').value,
+      id_user:null,
+      descripcion:null
+    };
 
     console.log(this.usuario);
     this.usuarioService.save(this.usuario).subscribe(res => {
       console.log(res);
+      this.openSnackBar(res);
+
+      this.router.navigate(['login']);
     }, err => {
       console.error(err);
+      this.openSnackBar("Error",err);
+
     });
 
-    //this.authService.login(usuario);
 
-    this.router.navigate(['login']);
   }
 
 }
