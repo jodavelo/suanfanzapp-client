@@ -127,5 +127,8 @@
       }
     }
   },
-  "defaultProject": "Suanfanzapp"
+  "defaultProject": "Suanfanzapp",
+  "cli": {
+    "analytics": "c6e3e844-64e3-4c32-a1b1-86c7dd057a2b"
+  }
 }

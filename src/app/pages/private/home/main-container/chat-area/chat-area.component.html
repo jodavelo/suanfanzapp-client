@@ -1,33 +1,32 @@
 <section class="chat">
   <div class="chat__header">
-    <img alt="avatar" mat-card-avatar
-         src="https://avatars.dicebear.com/api/human/abcd{{ randomSeed }}.svg">
+    <img alt="avatar" mat-card-avatar>
     <div class="chat__header__room-name">
-      <h4>{{ roomName || 'ROOM NAME' }}</h4>
+      <h4>ROOM NAME</h4>
     </div>
     <div class="chat__header__right">
       <button mat-icon-button>
-        <mat-icon>search_outline</mat-icon>
+        <!--<mat-icon>search_outline</mat-icon>-->
       </button>
       <button mat-icon-button>
-        <mat-icon class="file">attach_file</mat-icon>
+        <!--<mat-icon class="file">attach_file</mat-icon>-->
       </button>
       <button mat-icon-button>
-        <mat-icon>more_vert</mat-icon>
+        <!--<mat-icon>more_vert</mat-icon>-->
       </button>
     </div>
   </div>
 
   <div class="chat__body">
-    <router-outlet (activate)="chatData($event)"></router-outlet>
+    <router-outlet></router-outlet>
   </div>
 
   <div class="chat__footer">
     <button mat-icon-button>
-      <mat-icon>mood</mat-icon>
+      <!--<mat-icon>mood</mat-icon>-->
     </button>
 
-    <form #form="ngForm" (ngSubmit)="formSubmit(form)">
+    <form >
       <input name="message"
              ngModel
              placeholder="Type a message"
@@ -39,7 +38,7 @@
     </form>
 
     <button mat-icon-button>
-      <mat-icon>mic</mat-icon>
+      <!--<mat-icon>mic</mat-icon>-->
     </button>
   </div>
 </section>
