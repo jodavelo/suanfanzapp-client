@@ -27,13 +27,15 @@ import {MatStepperModule} from '@angular/material/stepper';
 import { MatGridListModule } from '@angular/material/grid-list';
 import { MatCardModule } from '@angular/material/card';
 import { MatMenuModule } from '@angular/material/menu';
+import { TestchatComponent } from './pages/private/testchat/testchat.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     LoginComponent,
     HomeComponent,
-    RegisterComponent
+    RegisterComponent,
+    TestchatComponent
   ],
   imports: [
     BrowserModule,
