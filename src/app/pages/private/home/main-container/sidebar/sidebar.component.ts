@@ -21,4 +21,7 @@ export class SidebarComponent implements OnInit {
   seedData(ev: string): void {
     this.seedValue = ev;
   }
+  logout(): void {
+    console.log("salio");
+  }
 }
