@@ -121,16 +121,13 @@ export class RegisterComponent implements OnInit {
     console.log(this.usuario);
     this.usuarioService.save(this.usuario).subscribe(res => {
       console.log(res);
-      this.openSnackBar(res);
+      this.openSnackBar(res.mesagge);
 
       this.router.navigate(['login']);
     }, err => {
       console.error(err);
       this.openSnackBar("Error",err);
-
     });
-
-
   }
 
 }
