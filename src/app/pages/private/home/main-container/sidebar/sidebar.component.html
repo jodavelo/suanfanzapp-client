@@ -1,8 +1,6 @@
 <section class="sidebar">
   <div class="sidebar__header">
-    <img alt="avatar"
-         mat-card-avatar
-         src="https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcT8K-kfbxSsaGJugBkF_sfdl1Ms1UUKcRnvRQ&usqp=CAU">
+    <img alt="avatar" mat-card-avatar>
     <div class="sidebar__header__icons">
       <button mat-icon-button>
         <mat-icon>donut_large</mat-icon>
@@ -10,20 +8,20 @@
       <button mat-icon-button>
         <mat-icon>chat</mat-icon>
       </button>
-      <button [mat-menu-trigger-for]="menu" mat-icon-button>
+      <button mat-icon-button>
         <mat-icon>more_vert</mat-icon>
       </button>
       <mat-menu #menu="matMenu">
-        <button mat-menu-item (click)="logout()">Logout</button>
+        <button mat-menu-item >Logout</button>
       </mat-menu>
     </div>
   </div>
   <!--  SIDEBAR-->
   <div class="sidebar__search">
     <div class="sidebar__search__content">
-      <form #form="ngForm" (ngSubmit)="onFormSubmit(form)">
+      <form >
         <button class="sidebar__search__content__icon" mat-icon-button>
-          <mat-icon>search_outline</mat-icon>
+          <!--<mat-icon>search_outline</mat-icon>-->
         </button>
         <input class="sidebar__search__content__input"
                name="search"
@@ -38,8 +36,8 @@
 
 
   <div class="sidebar__content">
-    <ng-container *ngFor="let r of roomData; let i=index">
-      <app-sidebar-content [roomData]="r" [randomSeed]="randomSeed[i]" (seedValue)="seedData($event)"></app-sidebar-content>
+    <ng-container >
+      <app-sidebar-content ></app-sidebar-content>
     </ng-container>
   </div>
 
