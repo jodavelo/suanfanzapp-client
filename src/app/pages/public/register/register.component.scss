@@ -11,7 +11,10 @@ input.example-right-align::-webkit-inner-spin-button {
     margin: 0;
     box-sizing: border-box;
 }
-
+.is-info {
+  width: 140px;
+  background: #03D755;
+}
 .register-container {
     width: 100vw;
     height: 100vh;
@@ -39,12 +42,8 @@ input.example-right-align::-webkit-inner-spin-button {
             .media-content {
                 .content {
                     .field {
-                        padding: 0px 10px;
                         .buttons {
-                            .is-info {
-                                width: 100px;
-                                background: #2C948A;
-                            }
+                            
                             .is-success {
                                 width: 140px;
                                 background: #03D755;

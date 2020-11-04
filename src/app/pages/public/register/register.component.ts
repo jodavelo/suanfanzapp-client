@@ -30,6 +30,7 @@ export class RegisterComponent implements OnInit {
     urlImagen:'',
     contrasena:''
   };
+
   telefono:TelefonoI = {
     id_prefijo: null,
     telefono: null
@@ -44,7 +45,7 @@ export class RegisterComponent implements OnInit {
       Validators.required,
       Validators.maxLength(15),
     ]),
-  }, PhoneValidator.createValidator(this.registroService));
+  }, );
   emailFormControl: FormControl = new FormControl(null, [
     Validators.required,
     Validators.email,
@@ -105,29 +106,47 @@ export class RegisterComponent implements OnInit {
   }
   
   doRegister(e) {
+
+
+
     e.preventDefault();
+    this.telefono = {
+      id_prefijo: this.telefonoFormGroup.get('prefijoFormControl').value,
+      telefono: this.telefonoFormGroup.get('numeroFormControl').value
+    }
     this.usuario = {
       apellido: this.formGroup.get('apellidoFormControl').value,
       correo:this.formGroup.get('emailFormControl').value,
-      id_prefijo:this.formGroup.get('telefonoFormGroup').value,
+      id_prefijo:this.telefonoFormGroup.get('prefijoFormControl').value,
       nombre:this.formGroup.get('nombreFormControl').value,
-      telefono:this.formGroup.get('telefonoFormGroup').value,
+      telefono:this.telefonoFormGroup.get('numeroFormControl').value,
       contrasena:this.formGroup.get('contrasenaFormControl').value,
       urlImagen:this.formGroup.get('urlFormControl').value,
       id_user:null,
       descripcion:null
     };
-
+    
     console.log(this.usuario);
-    this.usuarioService.save(this.usuario).subscribe(res => {
-      console.log(res);
-      this.openSnackBar(res.mesagge);
 
-      this.router.navigate(['login']);
-    }, err => {
-      console.error(err);
-      this.openSnackBar("Error",err);
+    this.registroService.verifyPhone(this.telefono).subscribe(res=>{
+      if(res==true){
+        this.openSnackBar("This phone is registred","Error");
+        return;
+      }
+      this.usuarioService.save(this.usuario).subscribe(res => {
+        console.log(res);
+  
+        this.router.navigate(['login']);
+      }, err => {
+        console.error(err);
+        this.openSnackBar("Error",err);
+      });
+      
+
+      
+
     });
+    
   }
 
 }
