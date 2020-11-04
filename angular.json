@@ -129,6 +129,10 @@
   },
   "defaultProject": "Suanfanzapp",
   "cli": {
+<<<<<<< HEAD
     "analytics": "cd64bb85-d5fb-4b52-a452-f0b2035c9ec3"
+=======
+    "analytics": "c6e3e844-64e3-4c32-a1b1-86c7dd057a2b"
+>>>>>>> bernal-branch
   }
 }
