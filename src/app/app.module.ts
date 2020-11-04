@@ -46,7 +46,8 @@ import { TestchatComponent } from './pages/private/testchat/testchat.component';
     SidebarContentComponent,
     ChatAreaComponent,
     ChatDefaultPageComponent,
-    ChatRoomComponent
+    ChatRoomComponent,
+    TestchatComponent
   ],
   imports: [
     BrowserModule,
