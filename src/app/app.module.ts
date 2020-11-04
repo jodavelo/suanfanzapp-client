@@ -41,16 +41,12 @@ import { TestchatComponent } from './pages/private/testchat/testchat.component';
     LoginComponent,
     HomeComponent,
     RegisterComponent,
-<<<<<<< HEAD
-    TestchatComponent
-=======
     MainContainerComponent,
     SidebarComponent,
     SidebarContentComponent,
     ChatAreaComponent,
     ChatDefaultPageComponent,
     ChatRoomComponent
->>>>>>> bernal-branch
   ],
   imports: [
     BrowserModule,
