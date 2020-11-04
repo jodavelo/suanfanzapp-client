@@ -5,6 +5,12 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { LoginComponent } from './pages/public/login/login.component';
 import { HomeComponent } from './pages/private/home/home.component';
+import {MainContainerComponent} from './pages/private/home/main-container/main-container.component';
+import {SidebarComponent} from './pages/private/home/main-container/sidebar/sidebar.component';
+import {SidebarContentComponent} from './pages/private/home/main-container/sidebar/sidebar-content/sidebar-content.component';
+import {ChatAreaComponent} from './pages/private/home/main-container/chat-area/chat-area.component';
+import {ChatDefaultPageComponent} from './pages/private/home/main-container/chat-area/chat-default-page/chat-default-page.component';
+import {ChatRoomComponent} from './pages/private/home/main-container/chat-area/chat-room/chat-room.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatButtonModule } from '@angular/material/button';
 import { MatCheckboxModule } from '@angular/material/checkbox';
@@ -25,7 +31,13 @@ import {MatStepperModule} from '@angular/material/stepper';
     AppComponent,
     LoginComponent,
     HomeComponent,
-    RegisterComponent
+    RegisterComponent,
+    MainContainerComponent,
+    SidebarComponent,
+    SidebarContentComponent,
+    ChatAreaComponent,
+    ChatDefaultPageComponent,
+    ChatRoomComponent
   ],
   imports: [
     BrowserModule,

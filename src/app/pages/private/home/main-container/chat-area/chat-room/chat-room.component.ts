@@ -4,11 +4,11 @@ import {map} from 'rxjs/operators';
 import {Subscription} from 'rxjs';
 
 @Component({
-  selector: 'app-main-container',
-  templateUrl: './main-container.component.html',
-  styleUrls: ['./main-container.component.scss']
+  selector: 'app-chat-room',
+  templateUrl: './chat-room.component.html',
+  styleUrls: ['./chat-room.component.scss']
 })
-export class MainContainerComponent implements OnInit {
+export class ChatRoomComponent implements OnInit {
   seedValue: string;
 
   constructor() {

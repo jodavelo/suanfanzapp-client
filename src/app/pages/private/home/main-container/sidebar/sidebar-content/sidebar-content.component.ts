@@ -3,11 +3,11 @@ import {Subscription} from 'rxjs';
 
 
 @Component({
-  selector: 'app-main-container',
-  templateUrl: './main-container.component.html',
-  styleUrls: ['./main-container.component.scss']
+  selector: 'app-sidebar-content',
+  templateUrl: './sidebar-content.component.html',
+  styleUrls: ['./sidebar-content.component.scss']
 })
-export class MainContainerComponent implements OnInit {
+export class SidebarContentComponent implements OnInit {
   seedValue: string;
 
   constructor() {

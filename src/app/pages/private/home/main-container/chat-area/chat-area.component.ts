@@ -1,14 +1,12 @@
 import {Component, Input, OnInit} from '@angular/core';
-import {NgForm} from '@angular/forms';
-import {Subscription} from 'rxjs';
 
 
 @Component({
-  selector: 'app-main-container',
-  templateUrl: './main-container.component.html',
-  styleUrls: ['./main-container.component.scss']
+  selector: 'app-chat-area',
+  templateUrl: './chat-area.component.html',
+  styleUrls: ['./chat-area.component.scss']
 })
-export class MainContainerComponent implements OnInit {
+export class ChatAreaComponent implements OnInit {
   seedValue: string;
 
   constructor() {
