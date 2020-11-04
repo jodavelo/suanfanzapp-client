@@ -11,6 +11,7 @@ import { PhoneValidator } from 'src/app/shared/validators/phone.validator';
 import { MailValidator } from 'src/app/shared/validators/mail.validator';
 import { TelefonoI } from 'src/app/shared/interfaces/TelefonoI';
 import { InvalidValueValidator } from 'src/app/shared/validators/invalid-value.validator';
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 @Component({
   selector: 'app-register',
@@ -29,6 +30,7 @@ export class RegisterComponent implements OnInit {
     urlImagen:'',
     contrasena:''
   };
+
   telefono:TelefonoI = {
     id_prefijo: null,
     telefono: null
@@ -43,7 +45,7 @@ export class RegisterComponent implements OnInit {
       Validators.required,
       Validators.maxLength(15),
     ]),
-  }, PhoneValidator.createValidator(this.registroService));
+  }, );
   emailFormControl: FormControl = new FormControl(null, [
     Validators.required,
     Validators.email,
@@ -76,6 +78,7 @@ export class RegisterComponent implements OnInit {
     private prefijoService: PrefijoService,
     private usuarioService: UserService,
     private registroService: RegistroService,
+    private snackbar:MatSnackBar
     ) {
       
      }
@@ -90,22 +93,60 @@ export class RegisterComponent implements OnInit {
       //console.log(this.listaPrefijos);
     }, err => {
       console.error(err);
+      this.openSnackBar(err);
+
+
     });
   }
 
-  doRegister(e) {
-    e.preventDefault();
-
-    console.log(this.usuario);
-    this.usuarioService.save(this.usuario).subscribe(res => {
-      console.log(res);
-    }, err => {
-      console.error(err);
+  openSnackBar(message: string, action: string = 'Ok') {
+    this.snackbar.open(message, action, {
+      duration: 3000,
     });
+  }
+  
+  doRegister(e) {
 
-    //this.authService.login(usuario);
 
-    this.router.navigate(['login']);
+
+    e.preventDefault();
+    this.telefono = {
+      id_prefijo: this.telefonoFormGroup.get('prefijoFormControl').value,
+      telefono: this.telefonoFormGroup.get('numeroFormControl').value
+    }
+    this.usuario = {
+      apellido: this.formGroup.get('apellidoFormControl').value,
+      correo:this.formGroup.get('emailFormControl').value,
+      id_prefijo:this.telefonoFormGroup.get('prefijoFormControl').value,
+      nombre:this.formGroup.get('nombreFormControl').value,
+      telefono:this.telefonoFormGroup.get('numeroFormControl').value,
+      contrasena:this.formGroup.get('contrasenaFormControl').value,
+      urlImagen:this.formGroup.get('urlFormControl').value,
+      id_user:null,
+      descripcion:null
+    };
+    
+    console.log(this.usuario);
+
+    this.registroService.verifyPhone(this.telefono).subscribe(res=>{
+      if(res==true){
+        this.openSnackBar("This phone is registred","Error");
+        return;
+      }
+      this.usuarioService.save(this.usuario).subscribe(res => {
+        console.log(res);
+  
+        this.router.navigate(['login']);
+      }, err => {
+        console.error(err);
+        this.openSnackBar("Error",err);
+      });
+      
+
+      
+
+    });
+    
   }
 
 }
